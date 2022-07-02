@@ -1,0 +1,66 @@
+[colors]
+background = #33
+background-alt = #3306080a
+primary = #fff
+alert = #f7768e
+
+[bar/top]
+modules-right = battery date upgradeable powermenu
+modules-left = bspwm
+
+background = ${colors.background}
+
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = FiraCode Nerd Font:size=12;1
+
+wm-restack = bspwm
+
+[module/date]
+type = internal/date
+date = %Y-%m-%d%
+time = %H:%M:%S
+
+format = %{A1:bspc rule -a \* -o state=floating && gnome-calendar:} <label> %{A}
+label =  %date% %time%
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused-foreground = #ffffff
+label-focused-background = #3f3f3f
+label-focused-underline = #fba922
+
+label-separator-padding = 2
+
+label-occupied-underline = #555555
+
+[module/battery]
+type = internal/battery
+
+interval = 3
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+format-charging =  <label-charging>
+format-full = <label-full>
+format-discharging = <ramp-capacity> <label-discharging>
+
+[module/upgradeable]
+type = custom/script
+
+exec =  apt-get --simulate upgrade | grep 'upgraded,' | cut -d' ' -f1
+interval = 600
+format =  <label>
+
+[module/powermenu]
+type = custom/script
+format = %{A1:rofi -show p -modi p\:rofi-power-menu:}%{A}
+exec = echo "powermenu"
