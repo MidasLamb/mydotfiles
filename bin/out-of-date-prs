@@ -1,0 +1,8 @@
+#!/bin/bash
+# Checks the open prs using the github cli (gh)
+
+# Get all the open prs for me
+gh search prs 'author:MidasLamb' --state open
+
+# Loop through them and see which ones are mergeable.
+gh api 'repos/esoptra/pluglet-golang-zaza/pulls/272 -q .mergeable_state
