@@ -31,4 +31,5 @@ firefox &
 # Let's make vim actually usable
 setxkbmap -option "caps:swapescape"
 
-
+# Start ssh agent
+eval $(ssh-agent)
