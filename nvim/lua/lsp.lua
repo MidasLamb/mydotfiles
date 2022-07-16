@@ -19,3 +19,20 @@ require("lspconfig").sumneko_lua.setup({
     }
 })
 
+require("lspconfig").rust_analyzer.setup({
+    tools = {
+        hover_with_actions = true,
+        inlay_hints = {
+            show_paramter_hints = true,
+        }
+    },
+    server = {
+        settings = {
+            ["rust-analyzer"] = {
+                inlayHints = {
+                }
+            }
+        }
+    },
+    capabilities = updated_capabilities
+})
