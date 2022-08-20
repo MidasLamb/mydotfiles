@@ -1,7 +1,6 @@
 #! /bin/sh
 
 pgrep -x sxhkd > /dev/null || sxhkd &
-#deadd-notification-center &
 
 bspc monitor --reset-desktops web browser
 
@@ -16,7 +15,7 @@ bspc config border_width 0
 bspc config focus_follows_pointer true
 
 # Set the background
-feh --bg-fill $HOME/wallpapers/blue3.png
+feh --bg-fill $HOME/wallpapers/data-cloud.png
 
 xsetroot -cursor_name left_ptr &
 ~/.config/polybar/./launch.sh

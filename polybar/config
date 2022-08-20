@@ -56,7 +56,7 @@ format-discharging = <ramp-capacity> <label-discharging>
 [module/upgradeable]
 type = custom/script
 
-exec =  apt-get --simulate upgrade | grep 'upgraded,' | cut -d' ' -f1
+exec = checkupdates | wc -l
 interval = 600
 format =  <label>
 
