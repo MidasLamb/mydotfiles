@@ -2,7 +2,10 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor --reset-desktops web browser
+# Make sure our monitors are set up nicely, if we know
+autorandr -c
+
+bspc monitor eDP-1 --reset-desktops slack browser k8s
 
 bspc config border_width         2
 bspc config window_gap          12
@@ -23,11 +26,18 @@ xsetroot -cursor_name left_ptr &
 # Load picom
 picom --experimental-backends &
 
-# Start some default programs
+# Start some default programs & rules
+bspc rule -r "*" # First remove all previous rules
+
+
+bspc rule -a "Slack" monitor=eDP-1:^1
+gtk-launch slack
+
 bspc rule -a firefox --one-shot desktop='browser'
 firefox &
 
+bspc rule -a "openlens" desktop='k8s'
+
 # Let's make vim actually usable
 setxkbmap -option "caps:swapescape"
-
 

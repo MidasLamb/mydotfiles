@@ -5,7 +5,7 @@ primary = #fff
 alert = #f7768e
 
 [bar/top]
-modules-right = battery date upgradeable powermenu
+modules-right = battery date out-of-date-prs upgradeable powermenu
 modules-left = bspwm
 
 background = ${colors.background}
@@ -59,6 +59,13 @@ type = custom/script
 exec = checkupdates | wc -l
 interval = 600
 format =  <label>
+
+[module/out-of-date-prs]
+type = custom/script
+
+exec = ~/mydotfiles/bin/out-of-date-prs | egrep 'dirty|behind' | wc -l
+interval = 30
+format =  <label>
 
 [module/powermenu]
 type = custom/script
